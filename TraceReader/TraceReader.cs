@@ -25,12 +25,10 @@ namespace TraceReader
                     .Where(e => e.EventName.Contains("Activity"))
                     .ToList();
 
-                Console.WriteLine($"Activity Events Count: {diagnosticSourceActivityEvents.Count}");
+                Console.WriteLine($"Activity Events Count: {diagnosticSourceActivityEvents.Count} {Environment.NewLine}");
                 foreach (var traceEvent in diagnosticSourceActivityEvents)
                 {
-                    var m =traceEvent.GetDynamicMemberNames();
-
-                    Console.WriteLine($"{traceEvent.EventName}, Time: {traceEvent.TimeStamp}, ProcessName:{traceEvent.ProcessName}");
+                    Console.WriteLine($"{traceEvent.EventName}, ProcessId: {traceEvent.ProcessID}, ProcessName:{traceEvent.ProcessName}, Time: {traceEvent.TimeStamp}");
                 }
             }
         }
